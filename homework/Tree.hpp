@@ -12,34 +12,23 @@ class Tree
         Node *left;
     };
 
-
-
     // The fields for the BST
     Node *start;
     int amount;
 
-
-
     // Declaration of private methods
     Node *createNode(int value);
     void addPrivate(int value, Node *p);
-    
-
-
 
     // Start of public methods
- 
-  public:
 
-  
+  public:
     //Constructor
     Tree()
     {
         Tree::start = NULL;
         Tree::amount = 0;
     }
-
-
 
     // Declaration for all the methods
     void insert(int value);
