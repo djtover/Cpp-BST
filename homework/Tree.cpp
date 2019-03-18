@@ -1,29 +1,38 @@
+
 #include "Tree.hpp"
 
-bool Tree::contains(int value){
+bool Tree::contains(int value)
+{
 
+    return false;
 }
-bool Tree::insert(int value){
-
+void Tree::insert(int value)
+{
+    Tree::addPrivate(value, Tree::start);
 }
-int Tree::left(int value){
-
+int Tree::left(int value)
+{
+    return 0;
 }
-int Tree::parent(int value){
-
+int Tree::parent(int value)
+{
+    return 0;
 }
-void Tree::print(){
-
+void Tree::print()
+{
 }
-bool Tree::remove(int value){
-
+void Tree::remove(int value)
+{
 }
-int Tree::right(int value){
-
+int Tree::right(int value)
+{
+    return 0;
 }
-Node* Tree::root(){
-    return Tree::start
+Tree::Node *Tree::root()
+{
+    return Tree::start;
 }
-int Tree::size(){
-    return Tree::size
+int Tree::size()
+{
+    return Tree::amount;
 }
