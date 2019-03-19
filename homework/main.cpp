@@ -9,32 +9,16 @@ int main()
 
     t.print();
 
-    // t.insert(3);
-    // t.insert(7);
-    // t.insert(1);
-    // t.insert(-1);
-    // t.insert(-1);
-    // t.insert(4);
-    // t.insert(5);
     try
     {
-        t.insert(3);
-        t.insert(7);
-        t.insert(1);
-        t.insert(-1);
-        t.insert(4);
+        cout << t.size() << " should be 0" << endl;
         t.insert(5);
-        t.insert(2);
-        t.remove(3);
-        // cout << "t.left(1)=" << t.left(1) << endl;
-        // cout << "t.parent(5)=" << t.parent(5) << endl;
-        // cout << "t.right(3)=" << t.right(3) << endl;
-        cout << "t.size()=" << t.size() << endl;
-        cout << "t.root()=" << t.root() << endl;
-        cout<<"t.left(7)="<< t.left(7)<<endl;
-        t.print();
-        // cout << "t.contains(4)=" << t.contains(4) << endl;
-        // cout << "t.contains(6)=" << t.contains(6) << endl;
+        cout << t.size() << " should be 1" << endl;
+        cout << t.contains(5) << " should be true" << endl;
+        t.remove(5);
+        cout << t.contains(5) << " should be false" << endl;
+        t.remove(5);
+        cout << t.contains(5) << " should be false" << endl;
     }
     catch (const std::exception &ex)
     {

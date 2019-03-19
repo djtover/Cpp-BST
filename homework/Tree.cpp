@@ -14,21 +14,21 @@ Tree::Node *Tree::createNode(int value)
 }
 
 // A method to see if the tree contains a certain value
-int Tree::contains(int value)
+bool Tree::contains(int value)
 {
     Node *ans = findNode(value, start);
     if (ans != NULL)
     {
-        return 1;
+        return true;
     }
 
-    return 0;
+    return false;
 }
 
 //A method to insert a value to the tree
 void Tree::insert(int value)
 {
-    Tree::addPrivate(value, start);
+    addPrivate(value, start);
     amount++;
 }
 

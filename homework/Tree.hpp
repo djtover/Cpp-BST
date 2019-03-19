@@ -40,7 +40,7 @@ class Tree
     void insert(int value);
     void remove(int value);
     int size();
-    int contains(int value);
+    bool contains(int value);
     int root();
     int parent(int value);
     int left(int value);
