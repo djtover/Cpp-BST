@@ -197,17 +197,20 @@ void Tree::remove(int value)
     removePrivate(value, start);
     amount--;
 }
-
+// A private method to help the removal
 void Tree::removePrivate(int value, Node *p)
 {
+    // if the tree is empty
     if (start != NULL)
     {
+        // if the input value is the root value then remove root
         if (value == start->key)
         {
             removeRoot();
         }
         else
         {
+            // if input value is less then go left
             if (value < p->key)
             {
                 if (p->left == NULL)
@@ -223,6 +226,7 @@ void Tree::removePrivate(int value, Node *p)
                     removePrivate(value, p->left);
                 }
             }
+            // if input value is greater then go right
             else
             {
                 if (p->right == NULL)
@@ -245,31 +249,36 @@ void Tree::removePrivate(int value, Node *p)
         throw std::out_of_range(" Node doesn't exist");
     }
 }
+// A private method to help remove the root
 void Tree::removeRoot()
 {
+    // if the tree isn't empty
     if (start != NULL)
     {
-        Node* delP = start;
+        Node *delP = start;
         int rootKey = start->key;
         int smallInRight;
-
+        // if the root has no children
         if (start->left == NULL && start->right == NULL)
         {
             start = NULL;
             delete delP;
         }
+        // if the root only has a right child
         else if (start->left == NULL && start->right != NULL)
         {
             start = start->right;
             delP->right = NULL;
             delete delP;
         }
+        // if the root only has a left child
         else if (start->left != NULL && start->right == NULL)
         {
             start = start->left;
             delP->left = NULL;
             delete delP;
         }
+        // if the root has 2 children
         else
         {
             smallInRight = findSmallest(start->right);
@@ -305,7 +314,7 @@ int Tree::size()
 {
     return Tree::amount;
 }
-
+// A private method to find the smallest number in a tree starting from a certain point
 int Tree::findSmallest(Node *p)
 {
     if (start == NULL)
@@ -324,14 +333,16 @@ int Tree::findSmallest(Node *p)
         }
     }
 }
+// A private method to help remove a non-root node from the tree
 void Tree::removeRegular(Node *parent, Node *p, int left)
 {
+    // if the tree isn't empty
     if (start != NULL)
     {
         Node *delP;
         int delKey = p->key;
         int smallInRight;
-
+        // if the node that is gonna be removed has no children
         if (p->left == NULL && p->right == NULL)
         {
             delP = p;
@@ -345,34 +356,44 @@ void Tree::removeRegular(Node *parent, Node *p, int left)
             }
             delete delP;
         }
-        else if(p->left == NULL && p->right !=NULL){
-            if(left==0){
+        // if the node that is gonna be removed has one right child
+
+        else if (p->left == NULL && p->right != NULL)
+        {
+            if (left == 0)
+            {
                 parent->right = p->right;
             }
-            else{
+            else
+            {
                 parent->left = p->right;
             }
-            p->right =NULL;
+            p->right = NULL;
             delP = p;
             delete delP;
-
         }
-        else if(p->left != NULL && p->right ==NULL){
-            if(left==0){
+        // if the node that is gonna be removed has one left child
+
+        else if (p->left != NULL && p->right == NULL)
+        {
+            if (left == 0)
+            {
                 parent->right = p->left;
             }
-            else{
+            else
+            {
                 parent->left = p->left;
             }
-            p->left =NULL;
+            p->left = NULL;
             delP = p;
             delete delP;
-            
         }
+        // if the node that is gonna be removed has two children
 
-        else{
+        else
+        {
             smallInRight = findSmallest(p->right);
-            removePrivate(smallInRight,p);
+            removePrivate(smallInRight, p);
             p->key = smallInRight;
         }
     }
