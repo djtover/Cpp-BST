@@ -19,9 +19,13 @@ class Tree
     // Declaration of private methods
     Node *createNode(int value);
     void addPrivate(int value, Node *p);
+    void removePrivate(int value, Node* p);
+    void removeRoot();
+    void removeRegular(Node* parent, Node* p, int left);
     Node* findNode(int value, Node* p);
     void printPreOrder(Node* p);
     Node* findParent(int value , Node* p);
+    int findSmallest(Node* p);
     // Start of public methods
 
   public:
