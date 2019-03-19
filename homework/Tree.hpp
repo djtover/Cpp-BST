@@ -21,6 +21,7 @@ class Tree
     void addPrivate(int value, Node *p);
     Node* findNode(int value, Node* p);
     void printPreOrder(Node* p);
+    Node* findParent(int value , Node* p);
     // Start of public methods
 
   public:
@@ -35,7 +36,7 @@ class Tree
     void insert(int value);
     void remove(int value);
     int size();
-    bool contains(int value);
+    int contains(int value);
     int root();
     int parent(int value);
     int left(int value);
