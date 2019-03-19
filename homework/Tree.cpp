@@ -1,5 +1,6 @@
 
 #include "Tree.hpp"
+#include <stdexcept>
 
 // A method to create a node
 Tree::Node *Tree::createNode(int value)
@@ -22,16 +23,16 @@ bool Tree::contains(int value)
 //A method to insert a value to the tree
 void Tree::insert(int value)
 {
-    Tree::addPrivate(value, Tree::start);
+    Tree::addPrivate(value, start);
 }
 
 // A private method to add to the tree using the pointer
 void Tree::addPrivate(int value, Node *p)
 {
     //Check if the starting point is Null
-    if (p == NULL)
+    if (start == NULL)
     {
-        p = createNode(value);
+        start = createNode(value);
     }
     // if the value is less than the value of the pointer then go left
     else if (value < p->key)
@@ -63,9 +64,38 @@ void Tree::addPrivate(int value, Node *p)
         cout << "That value has been entered already" << endl;
     }
 }
+
+Tree::Node *Tree::findNode(int value, Node *p)
+{
+    if (p != NULL)
+    {
+        if (value == p->key)
+        {
+            return p;
+        }
+        else if (value < p->key)
+        {
+            return findNode(value, p->left);
+        }
+        else
+        {
+            return findNode(value, p->right);
+        }
+    }
+    else
+    {
+        return NULL;
+    }
+}
 int Tree::left(int value)
 {
-    return 0;
+    Node* parent = findNode(value, start);
+    if(parent->left == NULL){
+        throw std::out_of_range("No left node");
+    }
+    else{
+        return parent->left->key;
+    }
 }
 int Tree::parent(int value)
 {
@@ -73,6 +103,22 @@ int Tree::parent(int value)
 }
 void Tree::print()
 {
+    printPreOrder(start);
+}
+void Tree::printPreOrder(Node *p)
+{
+    if(start != NULL){
+        cout << p->key << " ";
+        if(p->left !=NULL){
+            printPreOrder(p->left);
+        }
+        if(p->right != NULL){
+            printPreOrder(p->right);        }
+
+    }
+    else{
+        cout << "The Tree is empty"<< endl;
+    }
 }
 void Tree::remove(int value)
 {
@@ -81,9 +127,9 @@ int Tree::right(int value)
 {
     return 0;
 }
-Tree::Node *Tree::root()
+int Tree::root()
 {
-    return Tree::start;
+    return Tree::start->key;
 }
 int Tree::size()
 {
