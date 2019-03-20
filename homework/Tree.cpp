@@ -3,7 +3,7 @@
 #include <stdexcept>
 
 // A method to create a node
-Tree::Node *Tree::createNode(int value)
+ariel::Tree::Node* ariel::Tree::createNode(int value)
 {
     Node *newNode = new Node();
 
@@ -14,7 +14,7 @@ Tree::Node *Tree::createNode(int value)
 }
 
 // A method to see if the tree contains a certain value
-bool Tree::contains(int value)
+bool ariel::Tree::contains(int value)
 {
     Node *ans = findNode(value, start);
     if (ans != NULL)
@@ -26,14 +26,14 @@ bool Tree::contains(int value)
 }
 
 //A method to insert a value to the tree
-void Tree::insert(int value)
+void ariel::Tree::insert(int value)
 {
     addPrivate(value, start);
     amount++;
 }
 
 // A private method to add to the tree using the pointer
-void Tree::addPrivate(int value, Node *p)
+void ariel::Tree::addPrivate(int value, Node *p)
 {
     //Check if the starting point is Null
     if (start == NULL)
@@ -71,7 +71,7 @@ void Tree::addPrivate(int value, Node *p)
     }
 }
 // A private method to find the Node that they are looking for
-Tree::Node *Tree::findNode(int value, Node *p)
+ariel::Tree::Node* ariel::Tree::findNode(int value, Node *p)
 {
     if (p != NULL)
     {
@@ -94,7 +94,7 @@ Tree::Node *Tree::findNode(int value, Node *p)
     }
 }
 // A method to find the left value of the value that they are looking for
-int Tree::left(int value)
+int ariel::Tree::left(int value)
 {
     Node *parent = findNode(value, start);
     if (parent->left == NULL)
@@ -107,7 +107,7 @@ int Tree::left(int value)
     }
 }
 // Find the parent of the value that they are looking for
-int Tree::parent(int value)
+int ariel::Tree::parent(int value)
 {
     Node *ans = findParent(value, start);
     if (ans == NULL)
@@ -120,7 +120,7 @@ int Tree::parent(int value)
     }
 }
 // A private method to help find the parent of the value they are looking for
-Tree::Node *Tree::findParent(int value, Node *p)
+ariel::Tree::Node* ariel::Tree::findParent(int value, Node *p)
 {
     if (p != NULL)
     {
@@ -167,12 +167,12 @@ Tree::Node *Tree::findParent(int value, Node *p)
     }
 }
 // print method
-void Tree::print()
+void ariel::Tree::print()
 {
     printPreOrder(start);
 }
 // A method to print in Preorder
-void Tree::printPreOrder(Node *p)
+void ariel::Tree::printPreOrder(Node *p)
 {
     if (start != NULL)
     {
@@ -192,13 +192,13 @@ void Tree::printPreOrder(Node *p)
     }
 }
 // A method to remove the node of the value they are looking for
-void Tree::remove(int value)
+void ariel::Tree::remove(int value)
 {
     removePrivate(value, start);
     amount--;
 }
 // A private method to help the removal
-void Tree::removePrivate(int value, Node *p)
+void ariel::Tree::removePrivate(int value, Node *p)
 {
     // if the tree is empty
     if (start != NULL)
@@ -250,7 +250,7 @@ void Tree::removePrivate(int value, Node *p)
     }
 }
 // A private method to help remove the root
-void Tree::removeRoot()
+void ariel::Tree::removeRoot()
 {
     // if the tree isn't empty
     if (start != NULL)
@@ -292,7 +292,7 @@ void Tree::removeRoot()
     }
 }
 // A method to find the right child of the value they are looking for
-int Tree::right(int value)
+int ariel::Tree::right(int value)
 {
     Node *parent = findNode(value, start);
     if (parent->right == NULL)
@@ -305,17 +305,17 @@ int Tree::right(int value)
     }
 }
 // return the value of root
-int Tree::root()
+int ariel::Tree::root()
 {
     return Tree::start->key;
 }
 // return the amount of leaves that are in the tree
-int Tree::size()
+int ariel::Tree::size()
 {
     return Tree::amount;
 }
 // A private method to find the smallest number in a tree starting from a certain point
-int Tree::findSmallest(Node *p)
+int ariel::Tree::findSmallest(Node *p)
 {
     if (start == NULL)
     {
@@ -334,7 +334,7 @@ int Tree::findSmallest(Node *p)
     }
 }
 // A private method to help remove a non-root node from the tree
-void Tree::removeRegular(Node *parent, Node *p, int left)
+void ariel::Tree::removeRegular(Node *parent, Node *p, int left)
 {
     // if the tree isn't empty
     if (start != NULL)
