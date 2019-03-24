@@ -83,9 +83,12 @@ ariel::Tree::Node* ariel::Tree::findNode(int value, Node *p)
         {
             return findNode(value, p->left);
         }
-        else
+        else if(value > p->key)
         {
             return findNode(value, p->right);
+        }
+        else{
+            return NULL;
         }
     }
     else
@@ -97,6 +100,9 @@ ariel::Tree::Node* ariel::Tree::findNode(int value, Node *p)
 int ariel::Tree::left(int value)
 {
     Node *parent = findNode(value, start);
+    if(parent == NULL){
+        throw std::out_of_range("Node doesn't exist");
+    }
     if (parent->left == NULL)
     {
         throw std::out_of_range("No left node");
@@ -295,6 +301,9 @@ void ariel::Tree::removeRoot()
 int ariel::Tree::right(int value)
 {
     Node *parent = findNode(value, start);
+      if(parent == NULL){
+        throw std::out_of_range("Node doesn't exist");
+    }
     if (parent->right == NULL)
     {
         throw std::out_of_range("No right node");

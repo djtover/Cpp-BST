@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-    Tree t;
+    ariel::Tree t;
 
     t.print();
 
@@ -18,11 +18,10 @@ int main()
         t.remove(5);
         cout << t.contains(5) << " should be false" << endl;
         t.remove(5);
-        cout << t.contains(5) << " should be false" << endl;
     }
     catch (const std::exception &ex)
     {
-        cout << "caught exception" << ex.what() << endl;
+        cout << "caught exception " << ex.what() << endl;
     }
 
     return 0;
