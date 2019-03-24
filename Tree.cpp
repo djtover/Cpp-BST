@@ -3,7 +3,7 @@
 #include <stdexcept>
 
 // A method to create a node
-ariel::Tree::Node* ariel::Tree::createNode(int value)
+ariel::Tree::Node *ariel::Tree::createNode(int value)
 {
     Node *newNode = new Node();
 
@@ -71,7 +71,7 @@ void ariel::Tree::addPrivate(int value, Node *p)
     }
 }
 // A private method to find the Node that they are looking for
-ariel::Tree::Node* ariel::Tree::findNode(int value, Node *p)
+ariel::Tree::Node *ariel::Tree::findNode(int value, Node *p)
 {
     if (p != NULL)
     {
@@ -83,11 +83,12 @@ ariel::Tree::Node* ariel::Tree::findNode(int value, Node *p)
         {
             return findNode(value, p->left);
         }
-        else if(value > p->key)
+        else if (value > p->key)
         {
             return findNode(value, p->right);
         }
-        else{
+        else
+        {
             return NULL;
         }
     }
@@ -100,7 +101,8 @@ ariel::Tree::Node* ariel::Tree::findNode(int value, Node *p)
 int ariel::Tree::left(int value)
 {
     Node *parent = findNode(value, start);
-    if(parent == NULL){
+    if (parent == NULL)
+    {
         throw std::out_of_range("Node doesn't exist");
     }
     if (parent->left == NULL)
@@ -118,7 +120,7 @@ int ariel::Tree::parent(int value)
     Node *ans = findParent(value, start);
     if (ans == NULL)
     {
-        throw std::out_of_range("No parent");
+        throw std::out_of_range("Value doesn't exist");
     }
     else
     {
@@ -126,13 +128,15 @@ int ariel::Tree::parent(int value)
     }
 }
 // A private method to help find the parent of the value they are looking for
-ariel::Tree::Node* ariel::Tree::findParent(int value, Node *p)
+ariel::Tree::Node *ariel::Tree::findParent(int value, Node *p)
 {
     if (p != NULL)
     {
         if (value == start->key)
         {
-            return NULL;
+            throw std::out_of_range("Root node doesn't have a parent");
+
+            // return NULL;
         }
         if (value < p->key)
         {
@@ -143,7 +147,6 @@ ariel::Tree::Node* ariel::Tree::findParent(int value, Node *p)
             else if (value == p->left->key)
             {
                 return p;
-                ;
             }
             else
             {
@@ -159,7 +162,6 @@ ariel::Tree::Node* ariel::Tree::findParent(int value, Node *p)
             else if (value == p->right->key)
             {
                 return p;
-                ;
             }
             else
             {
@@ -221,7 +223,7 @@ void ariel::Tree::removePrivate(int value, Node *p)
             {
                 if (p->left == NULL)
                 {
-                    throw std::out_of_range(" Node doesn't exist");
+                    throw std::out_of_range("Node doesn't exist");
                 }
                 else if (value == p->left->key)
                 {
@@ -237,7 +239,7 @@ void ariel::Tree::removePrivate(int value, Node *p)
             {
                 if (p->right == NULL)
                 {
-                    throw std::out_of_range(" Node doesn't exist");
+                    throw std::out_of_range("Node doesn't exist");
                 }
                 else if (value == p->right->key)
                 {
@@ -252,7 +254,7 @@ void ariel::Tree::removePrivate(int value, Node *p)
     }
     else
     {
-        throw std::out_of_range(" Node doesn't exist");
+        throw std::out_of_range("Node doesn't exist");
     }
 }
 // A private method to help remove the root
@@ -301,7 +303,8 @@ void ariel::Tree::removeRoot()
 int ariel::Tree::right(int value)
 {
     Node *parent = findNode(value, start);
-      if(parent == NULL){
+    if (parent == NULL)
+    {
         throw std::out_of_range("Node doesn't exist");
     }
     if (parent->right == NULL)
@@ -316,6 +319,10 @@ int ariel::Tree::right(int value)
 // return the value of root
 int ariel::Tree::root()
 {
+    if (start == NULL)
+    {
+        throw std::out_of_range("Root doesn't exist");
+    }
     return Tree::start->key;
 }
 // return the amount of leaves that are in the tree
