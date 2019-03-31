@@ -2,6 +2,21 @@
 #include "Tree.hpp"
 #include <stdexcept>
 
+ariel::Tree::~Tree(){
+    removeSubtree(start);
+}
+void ariel::Tree::removeSubtree(Node* p){
+    if(p != NULL){
+        if(p->left != NULL){
+            removeSubtree(p->left);
+        }
+        if(p->right != NULL){
+            removeSubtree(p->right);
+        }
+        delete p;
+    }
+}
+
 // A method to create a node
 ariel::Tree::Node *ariel::Tree::createNode(int value)
 {

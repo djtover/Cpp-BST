@@ -28,6 +28,7 @@ private:
   void printPreOrder(Node *p);
   Node *findParent(int value, Node *p);
   int findSmallest(Node *p);
+  void removeSubtree(Node* p);
   // Start of public methods
 
 public:
@@ -37,6 +38,7 @@ public:
     Tree::start = NULL;
     Tree::amount = 0;
   }
+  ~Tree();
 
   // Declaration for all the methods
   void insert(int value);
